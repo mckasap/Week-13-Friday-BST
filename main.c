@@ -16,6 +16,19 @@ struct BstNode* GetNewNode(int data){
     newNode->right=NULL;
     return newNode;
 }
+struct BstNode* FindMax(struct BstNode *root){
+    if(root==NULL){ 
+        printf(" Tree is empty");
+        return NULL;
+    }
+    else if( root->right==NULL)
+        return root;
+    else
+        return FindMax(root->right);
+
+}
+
+
 
 struct BstNode* Insert(struct BstNode* root, int data){
     if(root==NULL){
@@ -53,7 +66,7 @@ struct BstNode* FindMin(struct BstNode *root){
 
 // iteratively finding the Minimum
 
-struct BstNode* FinMinIteratively(struct BstNode* root){
+struct BstNode* FindMaxIteratively(struct BstNode* root){
 
      struct BstNode *temp=root;
      if (temp==NULL)
@@ -61,8 +74,8 @@ struct BstNode* FinMinIteratively(struct BstNode* root){
             printf(" Tree is empty");
             return NULL;
     }
-    while (temp->left!=NULL){
-        temp=temp->left;
+    while (temp->right!=NULL){
+        temp=temp->right;
     }
     return temp;
 }
